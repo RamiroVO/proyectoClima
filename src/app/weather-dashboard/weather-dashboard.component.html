@@ -1,0 +1,25 @@
+<p>weather-dashboard works!</p>
+<!-- weather-dashboard.component.html -->
+
+
+<div class="container">
+  <form [formGroup]="weatherForm">
+    <!-- Input para ingresar la ciudad -->
+    <mat-form-field>
+      <input matInput placeholder="Ingrese la ciudad" [formControl]="city" required>
+    </mat-form-field>
+  
+    <!-- Botón para obtener el clima -->
+    <button mat-raised-button color="primary" (click)="getData()">Obtener Clima</button>
+  </form>
+
+    <!-- Información meteorológica -->
+    <div *ngIf="clima" class="weather-info">
+      <h2>{{ clima.name }}</h2>
+      <p>{{ clima.weather[0].main }}</p>
+      <p>{{ clima.weather[0].description }}</p>
+      <p>Temperatura: {{ clima.main.temp }}°C</p>
+      <p>Humedad: {{ clima.main.humidity }}%</p>
+    </div>
+  </div>
+  
