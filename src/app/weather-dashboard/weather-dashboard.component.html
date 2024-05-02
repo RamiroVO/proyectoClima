@@ -1,7 +1,3 @@
-<p>weather-dashboard works!</p>
-<!-- weather-dashboard.component.html -->
-
-
 <div class="container">
   <form [formGroup]="weatherForm">
     <!-- Input para ingresar la ciudad -->
@@ -14,12 +10,15 @@
   </form>
 
     <!-- Información meteorológica -->
-    <div *ngIf="clima" class="weather-info">
-      <h2>{{ clima.name }}</h2>
-      <p>{{ clima.weather[0].main }}</p>
-      <p>{{ clima.weather[0].description }}</p>
-      <p>Temperatura: {{ clima.main.temp }}°C</p>
-      <p>Humedad: {{ clima.main.humidity }}%</p>
+    <div *ngIf="lastRequest.length > 0">
+      <h3>Datos Climaticos</h3>
+      <div *ngFor="let city of lastRequest">
+        <h2>{{ city.name }}</h2>
+        <p>{{ city.weather[0].main }}</p>
+        <p>{{ city.weather[0].description }}</p>
+        <p>Temperature: {{ city.temperature }}°F</p>
+        <p>Humidity: {{ city.humidity }}%</p>
+      </div>
     </div>
   </div>
   
